@@ -3,6 +3,7 @@ const express = require("express");
 const dbconnection = require("./db/connection");
 require("dotenv").config();
 const userRouter=require("./routes/user.routes")
+const captainRouter=require("./routes/captain.routes")
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/api/users",userRouter)
+app.use("/api/captain",captainRouter)
 
 dbconnection()
   .then(() => {

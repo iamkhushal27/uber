@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+const Captain = require("../models/captain.model");
 
-async function auth(req, res, next) {
+async function captainAuth(req, res, next) {
   try {
     const accessToken =
       req.cookies?.accessToken ||
@@ -15,16 +15,16 @@ async function auth(req, res, next) {
     }
     const id = await jwt.verify(accessToken, process.env.ACCESS_SECRET);
     console.log(id);
-    const user =await User.findById(id).select("+password +refreshToken");
-    if (!user) {
+    const captain =await Captain.findById(id).select("+password +refreshToken");
+    if (!captain) {
       throw {
         status: 401,
         message: "unothirez access",
       };
     }
-    console.log(user,"here")
+    console.log(captain,"here")
 
-    req.user = user;
+    req.captain = captain;
     next();
   } catch (error) {
     console.log(error);
@@ -33,4 +33,4 @@ async function auth(req, res, next) {
       .json(error.message || "something went wrong");
   }
 }
-module.exports=auth
+module.exports=captainAuth
