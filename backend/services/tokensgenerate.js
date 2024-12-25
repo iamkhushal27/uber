@@ -3,7 +3,6 @@ const User = require("../models/user.model");
 
 async function tokens(id) {
   try {
-    console.log(id);
     const user = await User.findById(id);
     let accessToken;
     let refreshToken;
@@ -16,30 +15,39 @@ async function tokens(id) {
           message: "unothirez access",
         };
       }
+
       accessToken = await captain.generateAcesssTokens();
       refreshToken = await captain.generateRefreshTokens();
+
       if (!refreshToken && !accessToken) {
         throw {
           status: 401,
           message: "tokens is not generated",
         };
       }
+
       captain.refreshToken = refreshToken;
       captain.save({ validateBeforeSave: false });
-      console.log(accessToken, refreshToken);
+
+     
       return { accessToken, refreshToken };
+
     }
+
     accessToken = await user.generateAcesssTokens();
     refreshToken = await user.generateRefreshTokens();
+
     if (!accessToken && !refreshToken) {
       throw {
         status: 401,
         message: "tokens is not generated",
       };
     }
+
     user.refreshToken = refreshToken;
     user.save({ validateBeforeSave: false });
-    console.log(accessToken, refreshToken);
+
+   
     return { accessToken, refreshToken };
   } catch (error) {
     console.log(error);

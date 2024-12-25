@@ -45,9 +45,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 userSchema.methods.veryfyingPassword = async function (password) {
-    console.log("here")
-    console.log(password)
-    console.log(this.password)
+    
   return await bcrypt.compare(password, this.password);
 };
 userSchema.methods.generateAcesssTokens = async function () {

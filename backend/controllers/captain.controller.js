@@ -12,15 +12,15 @@ module.exports = {
         throw { status: 401, message: "all fields are required" };
       }
 
-      const user = await Captain.findOne({ email });
-      if (user) {
+      const captain = await Captain.findOne({ email });
+      if (captain) {
         throw {
           status: 401,
           message: "this email is already in use try newone",
         };
       }
 
-      const newUser = await Captain.create({
+      const newCaptain = await Captain.create({
         fullName: {
           firstName: fullName.firstName,
           lastName: fullName.lastName,
@@ -35,14 +35,14 @@ module.exports = {
         },
       });
 
-      if (!newUser) {
+      if (!newCaptain) {
         throw {
           status: 401,
-          message: "something went wrong during creating newUser",
+          message: "something went wrong during creating newCaptain",
         };
       }
 
-      res.status(200).json(newUser);
+      res.status(200).json(newCaptain);
     } catch (error) {
       console.log(error);
       res
@@ -99,7 +99,7 @@ module.exports = {
       }
       captain.refreshToken = undefined;
       captain.save({ validateBeforeSave: false });
-      console.log(captain);
+    
 
       const options = {
         httpOnly: true,

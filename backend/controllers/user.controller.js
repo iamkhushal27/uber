@@ -87,13 +87,13 @@ module.exports = {
     try {
       const { user } = req;
 
-      console.log(user);
+    
       if (!user) {
         throw { status: 401, message: "unothorized accesss1" };
       }
       user.refreshToken = undefined;
       user.save({ validateBeforeSave: false });
-      console.log(user);
+     
 
       const options = {
         httpOnly: true,
