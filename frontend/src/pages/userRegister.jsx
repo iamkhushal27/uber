@@ -1,9 +1,13 @@
 import { useFormik } from "formik";
 import style from "../css/userregister.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import userRegisterSchema from "../schemas/userregisteryupschema";
+import { useEffect, useState } from "react";
 
 function UserRegister(params) {
+   let navigate=useNavigate()
+
+  
   let {
     values,
     handleBlur,
@@ -14,16 +18,30 @@ function UserRegister(params) {
     touched,
   } = useFormik({
     initialValues: {
-    firstName:"",
-    lastName:"",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
     },
     validationSchema: userRegisterSchema,
     onSubmit: (values, action) => {
       console.log(values);
+
+      let setNewUser={
+        fullName: {
+          firstName: values.firstName,
+          lastName: values.lastName,
+        },
+        email: values.email,
+        password: values.password,
+      };
+     
+     console.log(setNewUser)
+     navigate("/home")
+      
       action.resetForm();
-    },
+    }
+    
   });
   return (
     <>
@@ -52,7 +70,6 @@ function UserRegister(params) {
                   value={values.firstName}
                   name="firstName"
                 />
-                
 
                 <input
                   type="text"
@@ -62,11 +79,10 @@ function UserRegister(params) {
                   name="lastName"
                   value={values.lastName}
                 />
-                
               </div>
               {errors.firstName && touched.firstName ? (
-                  <p className={style.error}>{errors.firstName}</p>
-                ) : null}
+                <p className={style.error}>{errors.firstName}</p>
+              ) : null}
             </div>
             <div className={style.mainformdiv}>
               <label htmlFor="email" className={style.labelemail}>
