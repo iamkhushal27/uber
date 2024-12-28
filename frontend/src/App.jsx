@@ -11,13 +11,7 @@ import CaptainLogin from './pages/captainLogin';
 
 function App() {
  return <>
- <Routes>
-  <Route path="/" element={<Home/>}/>
-  <Route path="/userregister" element={<UserRegister />} />
-  <Route path="/userlogin" element={<UserLogin/>}/>
-  <Route path="/captainregister" element={<CaptainRegister/>}/>
-  <Route path="/captainlogin" element={<CaptainLogin/>}/>
- </Routes>
+ 
  </>
 }
 
