@@ -1,0 +1,47 @@
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+}
+.homeimg {
+  height: 80vh; /* Adjusts to viewport height */
+  width: 100vw; /* Full width of the viewport */
+  background-image: url(https://media.istockphoto.com/id/1311247904/photo/uber-car-waiting-for-customer.jpg?s=612x612&w=0&k=20&c=jGyIr3O7N6n92Lb8DjzjAiQ0ApOeYOalvtO3012a2Zw=);
+  background-size: cover; /* Ensures the image covers the container */
+  background-position: center;
+  background-repeat: no-repeat; /* Prevents image tiling */
+  border: 1px solid black;
+}
+.content {
+    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contentheading {
+  font-size: 3vh;
+}
+.link{
+    margin: 1vh;
+    padding: 3vh;
+    width: 80%;
+    background-color: black;
+    border-radius: 10px;
+    text-align: center;
+    color: aliceblue;
+}
+.img{
+    width: 6vw;
+    height: 6vh;
+    margin: 10vh;
+
+    background-color: aliceblue;
+    
+}
+@media(max-width:600px){
+    .img{
+        width: 15vw;
+        height: 10vh;
+        margin: 10vh
+        
+    }
+}
