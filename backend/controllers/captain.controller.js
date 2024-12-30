@@ -81,7 +81,7 @@ module.exports = {
         .status(200)
         .cookie("accessToken", accessToken, options)
         .cookie("refreshToken", refreshToken, options)
-        .json(captain);
+        .json({captain,accessToken});
     } catch (error) {
       console.log(error);
       res

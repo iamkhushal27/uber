@@ -3,16 +3,36 @@ import style from "../css/captainlogin.module.css";
 import { useFormik } from "formik";
 import signUpSchema from "../schemas/userLoginYupSchema";
 import captainSignUpSchema from "../schemas/captainLoginYupSchema";
+import { useContext } from "react";
+import { CaptainDataContext } from "../context/captainContext";
+import axios from "axios";
 
 function CaptainLogin(params) {
+
+  let {data,setData}=useContext(CaptainDataContext)
+  let navigate=useNavigate()
   let {values,handleBlur,handleChange,handleReset,handleSubmit,errors ,touched}=useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema:captainSignUpSchema,
-    onSubmit: (values,action) => {
+    onSubmit: async(values,action) => {
+      
       console.log(values);
+      let response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/captain/login`,
+        values,
+        {withCredentials:true}
+      );
+
+      if (response.status == 200) {
+        let data = response.data;
+        localStorage.setItem("token", data.accessToken);
+        setData(data.captain);
+        console.log(data.captain)
+        navigate("/captainhome");
+      }
       action.resetForm()
      
     },
