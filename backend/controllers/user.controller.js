@@ -62,20 +62,22 @@ module.exports = {
         throw { status: 401, message: "password is wrong" };
       }
       const { accessToken, refreshToken } = await tokens(user._id);
-      //   console.log(accessToken, refreshToken);
+      // console.log(accessToken, refreshToken);
       if (!accessToken && !refreshToken) {
         throw { status: 401, message: "tokens are not produce" };
       }
 
       const options = {
         httpOnly: true,
-        secure: true,
+        secure:true
       };
+      console.log(accessToken);
+      console.log(refreshToken);
       res
         .status(200)
         .cookie("accessToken", accessToken, options)
         .cookie("refreshToken", refreshToken, options)
-        .json(user);
+        .json({ user, accessToken });
     } catch (error) {
       console.log(error);
       res
@@ -87,13 +89,11 @@ module.exports = {
     try {
       const { user } = req;
 
-    
       if (!user) {
         throw { status: 401, message: "unothorized accesss1" };
       }
       user.refreshToken = undefined;
       user.save({ validateBeforeSave: false });
-     
 
       const options = {
         httpOnly: true,
