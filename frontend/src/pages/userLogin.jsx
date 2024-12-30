@@ -4,23 +4,43 @@ import { useFormik } from "formik";
 import signUpSchema from "../schemas/userLoginYupSchema";
 import { useContext } from "react";
 import { UserDataContext } from "../context/userContext";
+import axios from "axios";
 
 function UserLogin(params) {
-  let data=useContext(UserDataContext)
-  console.log(data)
-  let {values,handleBlur,handleChange,handleReset,handleSubmit,errors ,touched}=useFormik({
+  let { user, setUser } = useContext(UserDataContext);
+  let navigate = useNavigate();
+  // console.log(data)
+  let {
+    values,
+    handleBlur,
+    handleChange,
+    handleReset,
+    handleSubmit,
+    errors,
+    touched,
+  } = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    validationSchema:signUpSchema,
-    onSubmit: (values,action) => {
-      console.log(values);
-      action.resetForm()
-     
+    validationSchema: signUpSchema,
+    onSubmit: async (values, action) => {
+      let response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/users/login`,
+        values,
+        {withCredentials:true}
+      );
+
+      if (response.status == 200) {
+        let data = response.data;
+        localStorage.setItem("token", data.accessToken);
+        setUser(data.user);
+
+        navigate("/home");
+      }
     },
   });
-  console.log(errors)
+  console.log(errors);
   return (
     <>
       <div className={style.maindiv}>
@@ -32,13 +52,12 @@ function UserLogin(params) {
           <div className={style.formdiv}>
             <form onSubmit={handleSubmit} action="">
               <div>
-               
                 <label htmlFor="email" className={style.emaillabel}>
                   Enter your email
                 </label>
               </div>
               <input
-              onChange={handleChange}
+                onChange={handleChange}
                 type="email"
                 id="email"
                 name="email"
@@ -46,14 +65,16 @@ function UserLogin(params) {
                 value={values.email}
                 placeholder="enter your email"
               />
-              {errors.email&&touched.email?<p className={style.error}>{errors.email}</p>:null}
+              {errors.email && touched.email ? (
+                <p className={style.error}>{errors.email}</p>
+              ) : null}
               <div>
                 <label htmlFor="password" className={style.passwordlabel}>
                   Enter your password
                 </label>
               </div>
               <input
-              onChange={handleChange}
+                onChange={handleChange}
                 type="password"
                 id="password"
                 name="password"
@@ -61,9 +82,11 @@ function UserLogin(params) {
                 value={values.password}
                 placeholder="enter your password"
               />
-               {errors.password&&touched.password?<p className={style.error}>{errors.password}</p>:null}
+              {errors.password && touched.password ? (
+                <p className={style.error}>{errors.password}</p>
+              ) : null}
               <div>
-                <button  className={style.formbutton}>login</button>
+                <button className={style.formbutton}>login</button>
               </div>
             </form>
           </div>

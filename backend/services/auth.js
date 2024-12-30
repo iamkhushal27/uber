@@ -6,11 +6,12 @@ async function auth(req, res, next) {
     const accessToken =
       req.cookies?.accessToken ||
       req.header("Authorization")?.replace("Bearer", "");
+      console.log(req.cookies)
 
     if (!accessToken) {
       throw {
         status: 401,
-        message: "unothorized access",
+        message: "unothorized access1",
       };
     }
     const id = await jwt.verify(accessToken, process.env.ACCESS_SECRET);

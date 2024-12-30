@@ -2,12 +2,15 @@ import { useFormik } from "formik";
 import style from "../css/userregister.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import userRegisterSchema from "../schemas/userregisteryupschema";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserDataContext } from "../context/userContext";
+import axios from "axios";
 
 function UserRegister(params) {
-   let navigate=useNavigate()
+  let navigate = useNavigate();
+  let { user, setUser } = useContext(UserDataContext);
+  console.log(user);
 
-  
   let {
     values,
     handleBlur,
@@ -24,10 +27,10 @@ function UserRegister(params) {
       password: "",
     },
     validationSchema: userRegisterSchema,
-    onSubmit: (values, action) => {
+    onSubmit: async (values, action) => {
       console.log(values);
 
-      let setNewUser={
+      let setNewUser = {
         fullName: {
           firstName: values.firstName,
           lastName: values.lastName,
@@ -35,13 +38,23 @@ function UserRegister(params) {
         email: values.email,
         password: values.password,
       };
-     
-     console.log(setNewUser)
-     navigate("/home")
-      
+
+      console.log(setNewUser);
+      let response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/users/`,
+        setNewUser
+      );
+      console.log(response);
+      if (response.status == 200) {
+        let data = response.data;
+
+        setUser(data);
+
+        navigate("/userlogin");
+      }
+
       action.resetForm();
-    }
-    
+    },
   });
   return (
     <>
