@@ -5,8 +5,9 @@ async function auth(req, res, next) {
   try {
     const accessToken =
       req.cookies?.accessToken ||
-      req.header("Authorization")?.replace("Bearer", "");
-      console.log(req.cookies)
+      req.header("Authorization")?.replace("Bearer ", "");
+      // console.log(req.cookies)
+      console.log("acessTOken",accessToken)
 
     if (!accessToken) {
       throw {
