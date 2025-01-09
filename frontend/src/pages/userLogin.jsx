@@ -7,6 +7,7 @@ import { UserDataContext } from "../context/userContext";
 import axios from "axios";
 
 function UserLogin(params) {
+  // localStorage.removeItem('token')
   let { user, setUser } = useContext(UserDataContext);
   let navigate = useNavigate();
   // console.log(data)

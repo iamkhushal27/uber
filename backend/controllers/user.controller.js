@@ -71,8 +71,7 @@ module.exports = {
         httpOnly: true,
         secure:true
       };
-      console.log(accessToken);
-      console.log(refreshToken);
+     
       res
         .status(200)
         .cookie("accessToken", accessToken, options)

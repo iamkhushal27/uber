@@ -1,0 +1,189 @@
+.logoimg {
+  width: 15vw;
+  height: 8vh;
+
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  background-color: black;
+
+  margin: 0px;
+}
+
+.map {
+  height: 70vh;
+  width: 100vw;
+  background-image: cover;
+}
+.tripheading {
+  margin-left: 4vw;
+
+  font-size: 9vw;
+}
+.inputdiv {
+  height: 100%;
+  width: 100vw;
+  /* background-color:blue; */
+  /* margin: 0px; */
+
+  position: absolute;
+  top: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  /* background-color: aliceblue; */
+}
+.pickupdiv {
+  margin: 4vw;
+}
+.pickup {
+  width: 92vw;
+  height: 5vh;
+  border-radius: 10px;
+  padding-left: 10vw;
+  font-size: 5vw;
+  background-color: #eee;
+}
+.background {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.arrow {
+  width: 10vw;
+  height: 3vh;
+}
+.panel {
+  height: 0vh;
+  /* display: none; */
+  background-color: white;
+  /* bottom: 0%; */
+  width: 100%;
+  /* display: none; */
+}
+.carpick {
+  height: 0vh;
+  /* display: none; */
+  background-color: white;
+  /* bottom: 0%; */
+  width: 100%;
+
+  /* display: none; */
+}
+.carimg {
+  margin: 2vw;
+  padding: 0vw;
+  width: 25vw;
+  height: 10vh;
+}
+.pickcarouterdiv {
+  display: flex;
+  margin: 2vw;
+
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.pickcarouterdiv:hover {
+  border: 2px solid black;
+  border-radius: 5%;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.outerdivcontent {
+  /* border: 2px solid black; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.carcontent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.insidecarcontent {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.uberheading {
+  font-size: 5vw;
+  font-weight: bold;
+}
+.personlogo {
+  font-size: x-large;
+  font-weight: bold;
+  
+}
+.rate {
+  font-size: x-large;
+  font-weight: bold;
+}
+.paracontent {
+  font-size: medium;
+  font-weight: 600;
+}
+.cancelicon {
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+}
+.confirmride {
+    height: 0vh;
+    /* display: none; */
+    background-color: white;
+    /* bottom: 0%; */
+    width: 100%;
+  
+    /* display: none; */
+  }
+.confirmheading{
+    margin-top: 2vh;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+.confirmcancel{
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+.confirmimg{
+    width: 60vw;
+    height:25vh;
+    margin: auto;
+}
+.confirmcontent{
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+    font-weight: 500;
+    margin-top: 1vh;
+    gap: 0%;
+}
+.locationlogo{
+    display: flex;
+    align-items: center;
+    font-size: xx-large;
+    margin: 2vw;
+}
+.confirmbuttondiv{
+    display: flex;
+    justify-content: center;
+}
+.confirmbutton{
+    padding: 3vw 8vw;
+
+    background-color: greenyellow;
+    margin-top: 1vw;
+    font-size: larger;
+    border-radius: 8%;
+    margin-top: 2vh;
+    
+}
+/* .gap{
+    line-height: 95%;
+    display: flex;
+    flex-direction: column;
+} */
