@@ -1,0 +1,86 @@
+.outerdiv {
+  display: flex;
+  flex-direction: column;
+}
+.homeimg {
+  height: 50vh;
+  width: 100vw;
+}
+.contentprofilediv {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+.personimg {
+  width: 30vw;
+  height: 15vh;
+  margin-left: 2vw;
+}
+.profilecontentdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-right: 2vw;
+}
+confirmride {
+    height: 0vh;
+    /* display: none; */
+    background-color: white;
+    /* bottom: 0%; */
+    width: 100%;
+  
+    /* display: none; */
+  }
+.confirmheading{
+    margin-top: 2vh;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+.confirmcancel{
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+.confirmimg{
+    width: 60vw;
+    height:25vh;
+    margin: auto;
+}
+.confirmcontent{
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+    font-weight: 500;
+    margin-top: 1vh;
+    gap: 0%;
+}
+.locationlogo{
+    display: flex;
+    align-items: center;
+    font-size: xx-large;
+    margin: 2vw;
+}
+.confirmbuttondiv{
+    display: flex;
+    justify-content: center;
+}
+.confirmbutton{
+    padding: 3vw 8vw;
+
+    background-color: greenyellow;
+    margin-top: 1vw;
+    font-size: larger;
+    border-radius: 8%;
+    margin-top: 2vh;
+    
+}
+/* .gap{
+    line-height: 95%;
+    display: flex;
+    flex-direction: column;
+} */
+

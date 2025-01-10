@@ -17,6 +17,7 @@ import CaptainContext from "./context/captainContext.jsx";
 import CaptainProtectedWrapper from "./pages/captainWrapperProtected.jsx";
 import CaptainHome from "./pages/captainHome.jsx";
 import CaptainLogout from "./pages/captainLogout.jsx";
+import Ride from "./pages/riding.jsx";
 
 let router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ let router = createBrowserRouter([
   {
     path: "/home",
     element: <UserProtectedWrapper><Home /></UserProtectedWrapper>,
+  },
+  {
+    path: "/ride",
+    element:<Ride />,
   },
   {
     path: "/user/logout",
