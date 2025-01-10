@@ -8,6 +8,7 @@ import { TiLocation } from "react-icons/ti";
 import { PiMoney } from "react-icons/pi";
 
 function Ridepopup({ setRidepopup,setConfirmRidepopup }) {
+  console.log("done")
   return (
     <>
       {" "}
