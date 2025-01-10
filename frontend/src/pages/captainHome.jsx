@@ -7,7 +7,7 @@ import { TbLogout2 } from "react-icons/tb";
 import { Link } from "react-router-dom";
 // import Ridepopup from "../components/ridepopup";
 import UserDetails from "../components/userdetails";
-import Ridepopup from "../components/ridepopup";
+import Ridepopup from "../components/ridePopup";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ConfrimRidePopup from "../components/confirmRidePopup";
@@ -15,6 +15,7 @@ import ConfrimRidePopup from "../components/confirmRidePopup";
 function CaptainHome(params) {
   let [ridepopup, setRidepopup] = useState(false);
   let [confirmridepopup, setConfirmRidepopup] = useState(false);
+  console.log(confirmridepopup)
 
   return (
     <>
@@ -26,24 +27,29 @@ function CaptainHome(params) {
             </Link>
             <button
               onClick={() => {
-                setRidepopup(true);
+               setRidepopup(true)
+                // console.log(ridepopup);
               }}
             >
-              donesjkjsfdijijfijgij
+           kdfkjsdkjsfjsdjkj
             </button>
           </div>
         </div>
 
-        {ridepopup ? (
-          <Ridepopup setRidepopup={setRidepopup} setConfirmRidepopup={setConfirmRidepopup}></Ridepopup>
-        ) : (
+        {ridepopup ? 
+          <Ridepopup
+            setRidepopup={setRidepopup}
+            setConfirmRidepopup={setConfirmRidepopup}
+          ></Ridepopup>
+         : 
           <UserDetails></UserDetails>
-        )}
+        }
         {confirmridepopup ? (
-          <ConfrimRidePopup setRidepopup={setRidepopup} setConfirmRidepopup={setConfirmRidepopup} ></ConfrimRidePopup>
-        ) : (
-          null
-        )}
+          <ConfrimRidePopup
+            setRidepopup={setRidepopup}
+            setConfirmRidepopup={setConfirmRidepopup}
+          ></ConfrimRidePopup>
+        ) : null}
       </div>
     </>
   );
